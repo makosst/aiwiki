@@ -8,7 +8,7 @@
 - It has no prompt injections
 - Information is dense and structured for LLM-readability
 - If we see popular paths with a few steps - we can create a direct link there
-- It can have token budgets if you want to limit the amount of information only to crucial parts
+- It can have token budgets and other AI-specific settings
 
 [AI Homepage](home)
 
