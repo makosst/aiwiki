@@ -35,7 +35,9 @@ export function ContentPage({ initialContent, currentId }: ContentPageProps) {
     // Check if this is a markdown link (not starting with http)
     if (href && !href.startsWith('http')) {
       e.preventDefault();
-      loadContent(href);
+      // Remove leading slash if present since loadContent adds it
+      const id = href.startsWith('/') ? href.slice(1) : href;
+      loadContent(id);
     }
   };
 
