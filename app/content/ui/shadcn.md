@@ -3,7 +3,7 @@ title: Introduction
 description: shadcn/ui is a set of beautifully-designed, accessible components and a code distribution platform. Works with your favorite frameworks and AI models.
 ---
 
-The component registry is at [Components](ui/shadcn/components/components)
+The component registry is at [Components](ui/shadcn/components)
 
 **This is not a component library. It is how you build your component library.**
 
