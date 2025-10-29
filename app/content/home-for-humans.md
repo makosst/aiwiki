@@ -1,6 +1,6 @@
 # Welcome to AI Wiki 
 
-[![Install MCP Server](https://cursor.com/deeplink/mcp-install-dark.svg)](cursor://anysphere.cursor-deeplink/mcp/install?name=aiwiki&config=eyJ1cmwiOiJodHRwczovL2Fpd2lraS10d28udmVyY2VsLmFwcC9hcGkvbWNwIn0%3D)
+[![Install MCP Server](https://cursor.com/deeplink/mcp-install-dark.svg)](https://cursor.com/en-US/install-mcp?name=aiwiki&config=eyJ1cmwiOiJodHRwczovL2Fpd2lraS10d28udmVyY2VsLmFwcC9hcGkvbWNwIn0%3D)
 
 - It is available via MCP without any scraping
 - It is pure markdown instead of HTML
