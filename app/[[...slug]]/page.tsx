@@ -12,7 +12,7 @@ export default async function Home({ params }: PageProps) {
   
   // Redirect root to /home
   if (!slug || slug.length === 0) {
-    redirect("/home");
+    redirect("/home-for-humans");
   }
   
   const id = slug.join("/");
