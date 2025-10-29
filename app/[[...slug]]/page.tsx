@@ -10,7 +10,7 @@ interface PageProps {
 export default async function Home({ params }: PageProps) {
   const { slug } = await params;
   
-  // Redirect root to /home
+  // Redirect root to /home-for-humans
   if (!slug || slug.length === 0) {
     redirect("/home-for-humans");
   }

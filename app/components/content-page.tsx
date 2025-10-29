@@ -21,7 +21,7 @@ export function ContentPage({ initialContent, currentId }: ContentPageProps) {
       setError(null);
       
       // Use Next.js router for navigation
-      router.push(`/${id === 'home' ? '' : id}`);
+      router.push(`/${id}`);
     } catch (err) {
       setError(err instanceof Error ? err.message : 'Failed to load content');
     } finally {
