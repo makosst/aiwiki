@@ -5,6 +5,8 @@ description: shadcn/ui is a set of beautifully-designed, accessible components a
 
 The component registry is at [Components](ui/shadcn/components)
 
+Custom component directories are at [Directories](ui/shadcn/directories)
+
 **This is not a component library. It is how you build your component library.**
 
 You know how most traditional component libraries work: you install a package from NPM, import the components, and use them in your app.

@@ -63,7 +63,7 @@ export default async function Home({ params }: PageProps) {
     });
     
     for (const item of items) {
-      initialContent += `- [${item.path}](/${item.path})\n`;
+      initialContent += `- [${item.name}](/${item.path})\n`;
     }
   } else {
     initialContent = "# Content Not Found\n\nThe page you're looking for doesn't exist.";
