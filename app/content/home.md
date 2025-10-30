@@ -5,6 +5,6 @@ Use the read tool with ids to follow the links.
 
 Here are some resources for coding agents:
 
-- [UI guides - consistent styling](ui/guides/consistent-styling) - styling guide
+- [UI guides](ui/guides) - guides on how to work with UI
 - [Shadcn](ui/shadcn) - popular UI registry
 - [Contributing](contributing) - guide for adding new documentation

@@ -2,7 +2,7 @@ import { z } from 'zod';
 import { createMcpHandler } from 'mcp-handler';
 import { readFile, writeFile, mkdir } from 'fs/promises';
 import { join, dirname } from 'path';
-import { existsSync } from 'fs';
+import { existsSync, readdirSync, statSync } from 'fs';
 
 const handler = createMcpHandler(
   (server) => {
@@ -42,30 +42,84 @@ const handler = createMcpHandler(
           
           // Construct the file path
           const filePath = join(process.cwd(), 'app', 'content', `${sanitizedId}.md`);
-          
-          // Check if file exists
-          if (!existsSync(filePath)) {
+          const directoryPath = join(process.cwd(), 'app', 'content', sanitizedId);
+
+          // Try to read the markdown file first
+          if (existsSync(filePath)) {
+            // Read the file
+            const content = await readFile(filePath, 'utf-8');
+
             return {
               content: [
-                { 
-                  type: 'text', 
-                  text: `Error: Markdown file "${sanitizedId}" not found` 
+                {
+                  type: 'text',
+                  text: content
                 }
               ],
-              isError: true,
             };
           }
-          
-          // Read the file
-          const content = await readFile(filePath, 'utf-8');
-          
+
+          // If no markdown file, check if directory exists and generate directory listing
+          if (existsSync(directoryPath) && statSync(directoryPath).isDirectory()) {
+            const children = readdirSync(directoryPath);
+            const title = sanitizedId.split("/").pop() || "Directory";
+            const capitalizedTitle = title.charAt(0).toUpperCase() + title.slice(1);
+
+            let content = `# ${capitalizedTitle}\n\nAvailable pages:\n\n`;
+
+            // List markdown files and subdirectories
+            const items: { name: string; path: string; isDir: boolean }[] = [];
+            const mdFiles = new Set<string>();
+
+            // First pass: collect all .md files
+            for (const child of children) {
+              if (child.endsWith('.md')) {
+                const name = child.replace('.md', '');
+                mdFiles.add(name);
+                items.push({ name, path: `${sanitizedId}/${name}`, isDir: false });
+              }
+            }
+
+            // Second pass: add directories that don't have a corresponding .md file
+            for (const child of children) {
+              const childPath = join(directoryPath, child);
+              const isDirectory = statSync(childPath).isDirectory();
+
+              if (isDirectory && !mdFiles.has(child)) {
+                items.push({ name: child, path: `${sanitizedId}/${child}`, isDir: true });
+              }
+            }
+
+            // Sort: directories first, then files, both alphabetically
+            items.sort((a, b) => {
+              if (a.isDir && !b.isDir) return -1;
+              if (!a.isDir && b.isDir) return 1;
+              return a.name.localeCompare(b.name);
+            });
+
+            for (const item of items) {
+              content += `- [${item.name}](/${item.path})\n`;
+            }
+
+            return {
+              content: [
+                {
+                  type: 'text',
+                  text: content
+                }
+              ],
+            };
+          }
+
+          // If neither file nor directory exists
           return {
             content: [
-              { 
-                type: 'text', 
-                text: content
+              {
+                type: 'text',
+                text: `Error: Content "${sanitizedId}" not found`
               }
             ],
+            isError: true,
           };
         } catch (error) {
           return {
