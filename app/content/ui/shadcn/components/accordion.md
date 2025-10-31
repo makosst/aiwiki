@@ -1,11 +1,13 @@
----
-title: Accordion
-description: A vertically stacked set of interactive headings that each reveal a section of content.
-component: true
+
+## Accordion
+
+## A vertically stacked set of interactive headings that each reveal a section of content.
+
 links:
+
   doc: https://www.radix-ui.com/docs/primitives/components/accordion
+  
   api: https://www.radix-ui.com/docs/primitives/components/accordion#api-reference
----
 
 <ComponentPreview
   name="accordion-demo"

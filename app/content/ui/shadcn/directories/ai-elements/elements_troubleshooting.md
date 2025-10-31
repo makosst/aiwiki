@@ -1,0 +1,60 @@
+## Troubleshooting
+
+What to do if you run into issues with AI Elements.
+Copy Markdown
+Open
+
+## Why are my components not styled?
+
+Make sure your project is configured correctly for shadcn/ui in Tailwind 4 - this means having a globals.css file that imports Tailwind and includes the shadcn/ui base styles.
+
+## I ran the Al Elements CLI but nothing was added to my project
+
+Double-check that:
+
+• Your current working directory is the root of your project (where package.json lives).
+
+• Your components.json file (if using shadcn-style config) is set up correctly.
+
+• You're using the latest version of the Al Elements CLI:
+
+Terminal
+
+npx ai-elements@latest
+
+If all else fails, feel free to open an issue on GitHub.
+
+## Theme switching doesn't work - my app stays in light mode
+
+Ensure your app is using the same data-theme system that shadcn/ui and Al Elements expect. The default implementation toggles a data-theme attribute on the <html> element. Make sure your tailwind.config.js is using class or data-selectors accordingly:
+
+## The component imports fail with "module not found"
+
+Check the file exists. If it does, make sure your tsconfig.json has a proper paths alias for @/ i.e.
+
+tsconfig.json
+
+{
+  "compilerOptions": {
+    "baseUrl": ".",
+    "paths": {
+      "@/*": ["./**"]
+    }
+  }
+}
+
+My AI coding assistant can't access AI Elements components
+
+1. Verify your config file syntax is valid JSON.
+2. Check that the file path is correct for your AI tool.
+3. Restart your coding assistant after making changes.
+4. Ensure you have a stable internet connection.
+
+## Still stuck?
+
+If none of these answers help, open issue on GitHub and someone will be happy to assist.
+
+< Usage
+Learn how to use AI Elements components in your applicat..
+
+MCP Server > AI Elements supports the Model Context Protocol (MCP) fo...

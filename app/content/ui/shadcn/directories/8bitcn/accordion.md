@@ -1,7 +1,5 @@
----
-title: Accordion
-description: Displays an 8-bit accordion component.
----
+## Accordion
+## Displays an 8-bit accordion component.
 
 ## Installation
 
@@ -25,3 +23,4 @@ import { Accordion, AccordionContent, AccordionItem, AccordionTrigger } from "@/
   </AccordionItem>
 </Accordion>
 ```
+   
